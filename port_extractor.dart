@@ -12,10 +12,10 @@ class PortExtractor {
   static const _kJsonKeyForEnvPath = "envPath";
   static const _mockEnvMetaPath = "mock_env_meta.json";
 
-  Future<String> extractPort() async {
+  Future<int> extractPort() async {
     final metaMap = await decodeJson(_mockEnvMetaPath);
     final envMap = await decodeJson(metaMap[_kJsonKeyForEnvPath]);
-    return envMap[_kJsonKeyForPort].toString();
+    return envMap[_kJsonKeyForPort];
   }
 
   Future<Map<String, dynamic>> decodeJson(String jsonFilePath) async {
